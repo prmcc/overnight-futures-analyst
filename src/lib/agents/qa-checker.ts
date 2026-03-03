@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+import OpenAI from 'openai';
 import { loadAgent } from '../config/loader';
 import type { InstrumentAnalysis, QAResult } from '../types';
 
@@ -9,10 +9,13 @@ export async function runQAChecker(
   const config = loadAgent('qa-checker');
   if (!config) throw new Error('QA checker agent config not found');
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error('ANTHROPIC_API_KEY is not set');
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) throw new Error('OPENROUTER_API_KEY is not set');
 
-  const anthropic = new Anthropic({ apiKey });
+  const openai = new OpenAI({
+    baseURL: 'https://openrouter.ai/api/v1',
+    apiKey,
+  });
 
   const userPrompt = `Please validate the following trading analysis against the raw technical data.
 
@@ -34,20 +37,23 @@ Check all items listed in your system prompt and respond with ONLY a JSON object
   "corrections": "specific corrections if failed, empty string if passed"
 }`;
 
-  console.log(`[QA Checker] Validating with ${config.model}...`);
+  const model = config.model || 'anthropic/claude-haiku-4-5-20251001';
 
-  const response = await anthropic.messages.create({
-    model: config.model || 'claude-haiku-4-5-20251001',
+  console.log(`[QA Checker] Validating with ${model}...`);
+
+  const response = await openai.chat.completions.create({
+    model,
     max_tokens: config.maxTokens || 4000,
     temperature: config.temperature ?? 0,
-    system: config.systemPrompt || '',
-    messages: [{ role: 'user', content: userPrompt }],
+    messages: [
+      { role: 'system', content: config.systemPrompt || '' },
+      { role: 'user', content: userPrompt },
+    ],
   });
 
-  const responseText = response.content
-    .filter((block): block is Anthropic.TextBlock => block.type === 'text')
-    .map(block => block.text)
-    .join('\n');
+  const responseText = response.choices[0]?.message?.content || '';
+  const inputTokens = response.usage?.prompt_tokens ?? 0;
+  const outputTokens = response.usage?.completion_tokens ?? 0;
 
   // Parse the JSON response
   let qaResult: QAResult;
@@ -63,10 +69,10 @@ Check all items listed in your system prompt and respond with ONLY a JSON object
       corrections: parsed.corrections || '',
       confidenceScore: parsed.confidenceScore ?? 0,
       tokenUsage: {
-        input: response.usage.input_tokens,
-        output: response.usage.output_tokens,
+        input: inputTokens,
+        output: outputTokens,
       },
-      model: config.model || 'claude-haiku-4-5-20251001',
+      model,
     };
   } catch (parseError) {
     console.error('[QA Checker] Failed to parse response:', parseError);
@@ -77,10 +83,10 @@ Check all items listed in your system prompt and respond with ONLY a JSON object
       corrections: '',
       confidenceScore: 50,
       tokenUsage: {
-        input: response.usage.input_tokens,
-        output: response.usage.output_tokens,
+        input: inputTokens,
+        output: outputTokens,
       },
-      model: config.model || 'claude-haiku-4-5-20251001',
+      model,
     };
   }
 

@@ -7,27 +7,6 @@ export interface OHLCVBar {
   volume: number;
 }
 
-export interface RawBar {
-  datetime: string;
-  open: string;
-  high: string;
-  low: string;
-  close: string;
-  volume?: string;
-}
-
-export interface TwelveDataResponse {
-  meta: {
-    symbol: string;
-    interval: string;
-    currency_base?: string;
-    currency_quote?: string;
-    type?: string;
-  };
-  values: RawBar[];
-  status: string;
-}
-
 export interface InstrumentConfig {
   id: string;
   name: string;

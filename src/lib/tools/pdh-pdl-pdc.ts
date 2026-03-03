@@ -2,7 +2,7 @@ import type { OHLCVBar } from '../types';
 import type { PreviousDayLevels } from '../types/analysis';
 
 export function extractPreviousDayLevels(dailyBars: OHLCVBar[], currentPrice: number, decimals = 2): PreviousDayLevels | null {
-  // dailyBars should come from TwelveData (newest first), so values[0] = today partial, values[1] = prev day
+  // dailyBars should come newest first, so values[0] = today partial, values[1] = prev day
   if (dailyBars.length < 2) return null;
 
   const prevDay = dailyBars[1]; // index 1 = previous completed day

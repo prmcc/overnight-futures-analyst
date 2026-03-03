@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+import OpenAI from 'openai';
 import { loadAgent } from '../config/loader';
 import type { InstrumentAnalysis, EconomicEvent, ChartImage, TradingAnalystOutput } from '../types';
 
@@ -63,18 +63,22 @@ export async function runTradingAnalyst(
   const config = loadAgent('trading-analyst');
   if (!config) throw new Error('Trading analyst agent config not found');
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error('ANTHROPIC_API_KEY is not set');
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey) throw new Error('OPENROUTER_API_KEY is not set');
 
-  const anthropic = new Anthropic({ apiKey });
+  const openai = new OpenAI({
+    baseURL: 'https://openrouter.ai/api/v1',
+    apiKey,
+  });
+
   const userPrompt = buildUserPrompt(instruments, events, corrections);
 
   // Build message content with optional chart images
-  const content: Anthropic.MessageCreateParams['messages'][0]['content'] = [
+  const content: OpenAI.ChatCompletionContentPart[] = [
     { type: 'text', text: userPrompt },
   ];
 
-  // Include chart images if available (Claude can analyze them)
+  // Include chart images if available
   for (const img of chartImages) {
     if (img.base64) {
       const inst = instruments.find(i => i.instrumentId === img.instrumentId);
@@ -83,39 +87,40 @@ export async function runTradingAnalyst(
         text: `\n[Chart image for ${inst?.instrumentName || img.instrumentId}]:`,
       });
       content.push({
-        type: 'image',
-        source: {
-          type: 'base64',
-          media_type: 'image/png',
-          data: img.base64,
+        type: 'image_url',
+        image_url: {
+          url: `data:image/png;base64,${img.base64}`,
         },
       });
     }
   }
 
-  console.log(`[Trading Analyst] Sending to ${config.model} with ${instruments.length} instruments...`);
+  const model = config.model || 'anthropic/claude-sonnet-4-20250514';
 
-  const response = await anthropic.messages.create({
-    model: config.model || 'claude-sonnet-4-20250514',
+  console.log(`[Trading Analyst] Sending to ${model} with ${instruments.length} instruments...`);
+
+  const response = await openai.chat.completions.create({
+    model,
     max_tokens: config.maxTokens || 8000,
     temperature: config.temperature ?? 0.2,
-    system: config.systemPrompt || '',
-    messages: [{ role: 'user', content }],
+    messages: [
+      { role: 'system', content: config.systemPrompt || '' },
+      { role: 'user', content },
+    ],
   });
 
-  const analysisText = response.content
-    .filter((block): block is Anthropic.TextBlock => block.type === 'text')
-    .map(block => block.text)
-    .join('\n');
+  const analysisText = response.choices[0]?.message?.content || '';
+  const inputTokens = response.usage?.prompt_tokens ?? 0;
+  const outputTokens = response.usage?.completion_tokens ?? 0;
 
-  console.log(`[Trading Analyst] Analysis complete: ${response.usage.input_tokens} input, ${response.usage.output_tokens} output tokens`);
+  console.log(`[Trading Analyst] Analysis complete: ${inputTokens} input, ${outputTokens} output tokens`);
 
   return {
     analysis: analysisText,
     tokenUsage: {
-      input: response.usage.input_tokens,
-      output: response.usage.output_tokens,
+      input: inputTokens,
+      output: outputTokens,
     },
-    model: config.model || 'claude-sonnet-4-20250514',
+    model,
   };
 }

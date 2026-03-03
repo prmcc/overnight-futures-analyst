@@ -2,7 +2,7 @@
   {
     "id": "gc",
     "name": "Gold (GC)",
-    "symbol": "XAU/USD",
+    "symbol": "GC=F",
     "chartSymbol": "COMEX:GC1!",
     "decimals": 2,
     "isUTC": true,
@@ -11,7 +11,7 @@
   {
     "id": "nq",
     "name": "Nasdaq (NQ)",
-    "symbol": "NQ",
+    "symbol": "NQ=F",
     "chartSymbol": "CME_MINI:NQ1!",
     "decimals": 2,
     "isUTC": false,
@@ -20,7 +20,7 @@
   {
     "id": "es",
     "name": "S&P 500 (ES)",
-    "symbol": "ES",
+    "symbol": "ES=F",
     "chartSymbol": "CME_MINI:ES1!",
     "decimals": 2,
     "isUTC": false,
@@ -29,7 +29,7 @@
   {
     "id": "silver",
     "name": "Silver (SI)",
-    "symbol": "XAG/USD",
+    "symbol": "SI=F",
     "chartSymbol": "COMEX:SI1!",
     "decimals": 3,
     "isUTC": true,
@@ -38,7 +38,7 @@
   {
     "id": "btc",
     "name": "Bitcoin (BTC)",
-    "symbol": "BTC/USD",
+    "symbol": "BTC-USD",
     "chartSymbol": "BITSTAMP:BTCUSD",
     "decimals": 0,
     "isUTC": true,

@@ -1,8 +1,8 @@
 [
   {
-    "id": "twelvedata-time-series",
-    "name": "TwelveData Time Series",
-    "description": "Fetches OHLCV time series data from TwelveData API for a given symbol and interval.",
+    "id": "yahoo-finance-chart",
+    "name": "Yahoo Finance Chart",
+    "description": "Fetches OHLCV time series data from Yahoo Finance v8 chart API for a given symbol and interval.",
     "category": "data-collection",
     "parameters": {
       "symbol": { "type": "string", "description": "Trading symbol (e.g., XAU/USD, NQ, ES)", "required": true },
@@ -140,9 +140,9 @@
     "usedBy": ["qa-checker"]
   },
   {
-    "id": "anthropic-messages",
-    "name": "Anthropic Messages API",
-    "description": "Sends messages to Claude (Sonnet or Haiku) via the Anthropic SDK.",
+    "id": "openrouter-chat",
+    "name": "OpenRouter Chat API",
+    "description": "Sends messages to LLMs via OpenRouter using the OpenAI-compatible SDK.",
     "category": "llm",
     "parameters": {
       "model": { "type": "string", "description": "Model ID", "required": true },

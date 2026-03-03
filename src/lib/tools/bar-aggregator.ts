@@ -1,15 +1,4 @@
-import type { OHLCVBar, RawBar } from '../types';
-
-export function parseBar(raw: RawBar): OHLCVBar {
-  return {
-    datetime: raw.datetime,
-    open: parseFloat(raw.open),
-    high: parseFloat(raw.high),
-    low: parseFloat(raw.low),
-    close: parseFloat(raw.close),
-    volume: parseInt(raw.volume || '0') || 0,
-  };
-}
+import type { OHLCVBar } from '../types';
 
 export function aggregateBars(bars: OHLCVBar[], factor: number): OHLCVBar[] {
   const aggregated: OHLCVBar[] = [];
