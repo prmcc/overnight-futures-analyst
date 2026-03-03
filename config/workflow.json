@@ -1,0 +1,56 @@
+{
+  "name": "Overnight Futures Analyst Pipeline",
+  "description": "Daily pre-market analysis pipeline that fetches overnight data, computes technical indicators, generates AI trading analysis, validates with QA, and delivers via email.",
+  "schedule": "30 13 * * 1-5",
+  "timezone": "America/Los_Angeles",
+  "stages": [
+    {
+      "id": "data-collection",
+      "name": "Data Collection",
+      "agents": ["market-data-collector", "economic-calendar", "chart-image"],
+      "parallel": true,
+      "dependsOn": []
+    },
+    {
+      "id": "technical-analysis",
+      "name": "Technical Analysis",
+      "agents": ["technical-analysis"],
+      "parallel": false,
+      "dependsOn": ["data-collection"]
+    },
+    {
+      "id": "ai-analysis",
+      "name": "AI Trading Analysis",
+      "agents": ["trading-analyst"],
+      "parallel": false,
+      "dependsOn": ["technical-analysis"]
+    },
+    {
+      "id": "qa-validation",
+      "name": "QA Validation",
+      "agents": ["qa-checker"],
+      "parallel": false,
+      "dependsOn": ["ai-analysis"]
+    },
+    {
+      "id": "report-generation",
+      "name": "Report Generation",
+      "agents": ["report-builder"],
+      "parallel": false,
+      "dependsOn": ["qa-validation"]
+    },
+    {
+      "id": "delivery",
+      "name": "Email Delivery",
+      "agents": ["delivery"],
+      "parallel": false,
+      "dependsOn": ["report-generation"]
+    }
+  ],
+  "qaMaxRetries": 2,
+  "emailRecipients": [],
+  "deliveryChannels": {
+    "telegram": true,
+    "email": true
+  }
+}

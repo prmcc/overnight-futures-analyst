@@ -1,0 +1,181 @@
+[
+  {
+    "id": "twelvedata-time-series",
+    "name": "TwelveData Time Series",
+    "description": "Fetches OHLCV time series data from TwelveData API for a given symbol and interval.",
+    "category": "data-collection",
+    "parameters": {
+      "symbol": { "type": "string", "description": "Trading symbol (e.g., XAU/USD, NQ, ES)", "required": true },
+      "interval": { "type": "string", "description": "Bar interval (5min, 1h, 1day)", "required": true },
+      "outputsize": { "type": "number", "description": "Number of bars to fetch", "required": true, "default": 252 }
+    },
+    "usedBy": ["market-data-collector"]
+  },
+  {
+    "id": "myfxbook-calendar",
+    "name": "Myfxbook Economic Calendar",
+    "description": "Fetches USD economic events from Myfxbook XML calendar feed for today.",
+    "category": "data-collection",
+    "parameters": {
+      "date": { "type": "string", "description": "Date in YYYY-MM-DD format", "required": true },
+      "impactFilter": { "type": "string", "description": "Impact level filter (2-3 for MEDIUM+HIGH)", "required": false, "default": "2-3" }
+    },
+    "usedBy": ["economic-calendar"]
+  },
+  {
+    "id": "chart-img-fetch",
+    "name": "Chart-Img TradingView Chart",
+    "description": "Fetches a TradingView chart image from chart-img.com API with specified symbol, interval, and indicators.",
+    "category": "data-collection",
+    "parameters": {
+      "symbol": { "type": "string", "description": "TradingView symbol (e.g., COMEX:GC1!)", "required": true },
+      "interval": { "type": "string", "description": "Chart interval (15m)", "required": true, "default": "15m" },
+      "studies": { "type": "string", "description": "Overlay studies (e.g., MACD)", "required": false, "default": "MACD" },
+      "width": { "type": "number", "description": "Image width in pixels", "required": false, "default": 800 },
+      "height": { "type": "number", "description": "Image height in pixels", "required": false, "default": 500 },
+      "theme": { "type": "string", "description": "Chart theme (dark/light)", "required": false, "default": "dark" }
+    },
+    "usedBy": ["chart-image"]
+  },
+  {
+    "id": "ema-calculator",
+    "name": "EMA Calculator",
+    "description": "Calculates Exponential Moving Average for a given period. Returns single value or full array.",
+    "category": "indicators",
+    "parameters": {
+      "closes": { "type": "number[]", "description": "Array of closing prices", "required": true },
+      "period": { "type": "number", "description": "EMA period (e.g., 21)", "required": true }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "bollinger-calculator",
+    "name": "Bollinger Bands Calculator",
+    "description": "Calculates Bollinger Bands (upper, middle/SMA, lower) for BB midline confluence detection.",
+    "category": "indicators",
+    "parameters": {
+      "closes": { "type": "number[]", "description": "Array of closing prices", "required": true },
+      "period": { "type": "number", "description": "SMA period (default 20)", "required": false, "default": 20 },
+      "stdDev": { "type": "number", "description": "Standard deviation multiplier (default 2)", "required": false, "default": 2 }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "atr-calculator",
+    "name": "ATR + Consolidation Detector",
+    "description": "Calculates Average True Range and detects consolidation when ATR ratio < 0.6 of 20-period average.",
+    "category": "indicators",
+    "parameters": {
+      "bars": { "type": "OHLCVBar[]", "description": "Array of OHLCV bars", "required": true },
+      "period": { "type": "number", "description": "ATR lookback period (default 14)", "required": false, "default": 14 },
+      "threshold": { "type": "number", "description": "Consolidation threshold (default 0.6)", "required": false, "default": 0.6 }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "swing-point-identifier",
+    "name": "Swing Point Identifier",
+    "description": "Identifies swing highs and lows using 3-bar pattern detection.",
+    "category": "indicators",
+    "parameters": {
+      "bars": { "type": "OHLCVBar[]", "description": "Array of OHLCV bars", "required": true }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "session-splitter",
+    "name": "Session Time Splitter",
+    "description": "Classifies timestamps into trading sessions: Tokyo (6PM-2AM ET), London (2AM-5AM ET), Pre-NY (5AM-9:30AM ET).",
+    "category": "analysis",
+    "parameters": {
+      "datetime": { "type": "string", "description": "ISO timestamp", "required": true },
+      "isUTC": { "type": "boolean", "description": "Whether the timestamp is in UTC", "required": true }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "bar-aggregator",
+    "name": "Bar Aggregator",
+    "description": "Aggregates 5-minute bars into 10-minute or 15-minute bars for multi-timeframe analysis.",
+    "category": "analysis",
+    "parameters": {
+      "bars5min": { "type": "OHLCVBar[]", "description": "Array of 5-minute bars", "required": true },
+      "factor": { "type": "number", "description": "Aggregation factor (2 for 10min, 3 for 15min)", "required": true }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "pdh-pdl-pdc-extractor",
+    "name": "PDH/PDL/PDC Extractor",
+    "description": "Extracts Previous Day High, Low, and Close from daily bars. Calculates gap from PDC to current price.",
+    "category": "analysis",
+    "parameters": {
+      "dailyBars": { "type": "OHLCVBar[]", "description": "Array of daily bars (most recent first)", "required": true },
+      "currentPrice": { "type": "number", "description": "Current price for gap calculation", "required": true }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "proximity-checker",
+    "name": "Price Proximity Checker",
+    "description": "Calculates percentage distance between current price and a reference level. Triggers alert when within 0.1%.",
+    "category": "analysis",
+    "parameters": {
+      "currentPrice": { "type": "number", "description": "Current price", "required": true },
+      "level": { "type": "number", "description": "Reference price level", "required": true },
+      "alertThreshold": { "type": "number", "description": "Alert threshold as decimal (default 0.001 = 0.1%)", "required": false, "default": 0.001 }
+    },
+    "usedBy": ["technical-analysis"]
+  },
+  {
+    "id": "rr-calculator",
+    "name": "Risk/Reward Calculator",
+    "description": "Calculates risk/reward ratio given entry, stop loss, and take profit levels.",
+    "category": "analysis",
+    "parameters": {
+      "entry": { "type": "number", "description": "Entry price", "required": true },
+      "stopLoss": { "type": "number", "description": "Stop loss price", "required": true },
+      "takeProfit": { "type": "number", "description": "Take profit price", "required": true }
+    },
+    "usedBy": ["qa-checker"]
+  },
+  {
+    "id": "anthropic-messages",
+    "name": "Anthropic Messages API",
+    "description": "Sends messages to Claude (Sonnet or Haiku) via the Anthropic SDK.",
+    "category": "llm",
+    "parameters": {
+      "model": { "type": "string", "description": "Model ID", "required": true },
+      "systemPrompt": { "type": "string", "description": "System prompt", "required": true },
+      "userMessage": { "type": "string", "description": "User message content", "required": true },
+      "temperature": { "type": "number", "description": "Sampling temperature", "required": false, "default": 0.2 },
+      "maxTokens": { "type": "number", "description": "Max output tokens", "required": false, "default": 4000 }
+    },
+    "usedBy": ["trading-analyst", "qa-checker"]
+  },
+  {
+    "id": "html-renderer",
+    "name": "HTML Email Renderer",
+    "description": "Renders the pre-market briefing HTML email template with bias cards, data tables, charts, and analysis.",
+    "category": "output",
+    "parameters": {
+      "instrumentData": { "type": "InstrumentAnalysis[]", "description": "Technical analysis per instrument", "required": true },
+      "analysis": { "type": "string", "description": "AI trading analysis text", "required": true },
+      "events": { "type": "EconomicEvent[]", "description": "Economic calendar events", "required": true },
+      "chartImages": { "type": "ChartImage[]", "description": "Base64 chart images", "required": true }
+    },
+    "usedBy": ["report-builder"]
+  },
+  {
+    "id": "gmail-sender",
+    "name": "Gmail SMTP Sender",
+    "description": "Sends HTML email via Gmail SMTP using nodemailer with app password authentication.",
+    "category": "output",
+    "parameters": {
+      "to": { "type": "string[]", "description": "Recipient email addresses", "required": true },
+      "subject": { "type": "string", "description": "Email subject line", "required": true },
+      "html": { "type": "string", "description": "HTML email body", "required": true }
+    },
+    "usedBy": ["delivery"]
+  }
+]

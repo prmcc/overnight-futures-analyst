@@ -1,0 +1,47 @@
+[
+  {
+    "id": "gc",
+    "name": "Gold (GC)",
+    "symbol": "XAU/USD",
+    "chartSymbol": "COMEX:GC1!",
+    "decimals": 2,
+    "isUTC": true,
+    "enabled": true
+  },
+  {
+    "id": "nq",
+    "name": "Nasdaq (NQ)",
+    "symbol": "NQ",
+    "chartSymbol": "CME_MINI:NQ1!",
+    "decimals": 2,
+    "isUTC": false,
+    "enabled": true
+  },
+  {
+    "id": "es",
+    "name": "S&P 500 (ES)",
+    "symbol": "ES",
+    "chartSymbol": "CME_MINI:ES1!",
+    "decimals": 2,
+    "isUTC": false,
+    "enabled": true
+  },
+  {
+    "id": "silver",
+    "name": "Silver (SI)",
+    "symbol": "XAG/USD",
+    "chartSymbol": "COMEX:SI1!",
+    "decimals": 3,
+    "isUTC": true,
+    "enabled": true
+  },
+  {
+    "id": "btc",
+    "name": "Bitcoin (BTC)",
+    "symbol": "BTC/USD",
+    "chartSymbol": "BITSTAMP:BTCUSD",
+    "decimals": 0,
+    "isUTC": true,
+    "enabled": true
+  }
+]

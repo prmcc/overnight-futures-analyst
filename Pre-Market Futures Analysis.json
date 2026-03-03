@@ -1,0 +1,1377 @@
+{
+  "name": "Pre-Market Futures Analysis (TwelveData)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 13,
+              "triggerAtMinute": 30
+            }
+          ]
+        }
+      },
+      "id": "a422cc34-202c-4ebf-91fc-8bb4e4d3ca24",
+      "name": "Daily 5:30 AM PST Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -352,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAU/USD"
+            },
+            {
+              "name": "interval",
+              "value": "5min"
+            },
+            {
+              "name": "outputsize",
+              "value": "252"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b6dbee6e-76ba-438a-adad-5a58179dd271",
+      "name": "Fetch Gold 5min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAU/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "24"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "gc-60min-fetch",
+      "name": "Fetch Gold 60min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "NQ"
+            },
+            {
+              "name": "interval",
+              "value": "5min"
+            },
+            {
+              "name": "outputsize",
+              "value": "252"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5d251099-8c4f-4758-b358-c79659968254",
+      "name": "Fetch NQ 5min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "NQ"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "24"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "nq-60min-fetch",
+      "name": "Fetch NQ 60min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "ES"
+            },
+            {
+              "name": "interval",
+              "value": "5min"
+            },
+            {
+              "name": "outputsize",
+              "value": "252"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "es-5min-fetch",
+      "name": "Fetch ES 5min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "ES"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "24"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "es-60min-fetch",
+      "name": "Fetch ES 60min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAG/USD"
+            },
+            {
+              "name": "interval",
+              "value": "5min"
+            },
+            {
+              "name": "outputsize",
+              "value": "252"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa1ff294-00ce-4d03-a35b-ca524b95c489",
+      "name": "Fetch Silver 5min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAG/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "24"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "silver-60min-fetch",
+      "name": "Fetch Silver 60min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "BTC/USD"
+            },
+            {
+              "name": "interval",
+              "value": "5min"
+            },
+            {
+              "name": "outputsize",
+              "value": "252"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "334c3a7a-60f5-4b48-a629-b4b766ae8b21",
+      "name": "Fetch BTC 5min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "BTC/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "24"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "btc-60min-fetch",
+      "name": "Fetch BTC 60min Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.myfxbook.com/calendar_statement.xml?start={{ $now.toFormat('yyyy-MM-dd') }}%2000:00&end={{ $now.toFormat('yyyy-MM-dd') }}%2023:59&filter=2-3_USD&calPeriod=10",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "fd22b8f1-6e7f-470c-87fc-469dd3d955a2",
+      "name": "Fetch Economic Calendar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const xmlText = $input.first().json.data || $input.first().json.body || String($input.first().json);\n\nfunction parseCalendarXML(xml) {\n  const events = [];\n  const rowMatches = xml.match(/<row[^>]*>[\\s\\S]*?<\\/row>/gi) || [];\n\n  for (const rowXml of rowMatches) {\n    const getAttr = (attr) => {\n      const match = rowXml.match(new RegExp(attr + '=\"([^\"]*)\"'));\n      return match ? match[1].trim() : '';\n    };\n    const getTag = (tag) => {\n      const match = rowXml.match(new RegExp('<' + tag + '>([\\\\s\\\\S]*?)<\\\\/' + tag + '>', 'i'));\n      return match ? match[1].trim() : '';\n    };\n\n    const title = getAttr('title') || getTag('title') || getTag('name');\n    const time = getAttr('time') || getTag('time');\n    const impact = getAttr('impact') || getTag('impact');\n    const forecast = getAttr('forecast') || getTag('forecast');\n    const previous = getAttr('previous') || getTag('previous');\n    const actual = getAttr('actual') || getTag('actual');\n    const currency = getAttr('currency') || getTag('currency') || 'USD';\n\n    if (title) {\n      events.push({\n        time: time || 'TBA',\n        title: title,\n        currency: currency,\n        impact: impact === '3' ? 'HIGH' : impact === '2' ? 'MEDIUM' : impact || 'MEDIUM',\n        forecast: forecast || '-',\n        previous: previous || '-',\n        actual: actual || '-'\n      });\n    }\n  }\n\n  if (events.length === 0) {\n    const eventMatches = xml.match(/<event[^>]*>[\\s\\S]*?<\\/event>/gi) || [];\n    for (const eventXml of eventMatches) {\n      const getTag = (tag) => {\n        const match = eventXml.match(new RegExp('<' + tag + '>([\\\\s\\\\S]*?)<\\\\/' + tag + '>', 'i'));\n        return match ? match[1].trim() : '';\n      };\n      events.push({\n        time: getTag('time') || 'TBA',\n        title: getTag('title') || getTag('name') || 'Unknown',\n        impact: getTag('impact') === '3' ? 'HIGH' : getTag('impact') === '2' ? 'MEDIUM' : 'LOW',\n        forecast: getTag('forecast') || '-',\n        previous: getTag('previous') || '-'\n      });\n    }\n  }\n\n  return events;\n}\n\nlet parsedEvents = [];\ntry {\n  parsedEvents = parseCalendarXML(xmlText);\n} catch (e) {\n  console.log('XML Parse error:', e.message);\n}\n\nconst impactOrder = { 'HIGH': 0, 'MEDIUM': 1, 'LOW': 2 };\nparsedEvents.sort((a, b) => (impactOrder[a.impact] || 2) - (impactOrder[b.impact] || 2));\n\nreturn {\n  json: {\n    economicCalendar: parsedEvents.slice(0, 20)\n  }\n};"
+      },
+      "id": "parse-calendar-xml",
+      "name": "Parse Calendar XML",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        200,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.chart-img.com/v1/tradingview/advanced-chart",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "COMEX:GC1!"
+            },
+            {
+              "name": "interval",
+              "value": "15m"
+            },
+            {
+              "name": "studies",
+              "value": "MACD"
+            },
+            {
+              "name": "width",
+              "value": "800"
+            },
+            {
+              "name": "height",
+              "value": "500"
+            },
+            {
+              "name": "theme",
+              "value": "dark"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "c379e853-c3b4-475d-bf52-aea7fa683cf0",
+      "name": "Fetch GC Chart Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.chart-img.com/v1/tradingview/advanced-chart",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "CME_MINI:NQ1!"
+            },
+            {
+              "name": "interval",
+              "value": "15m"
+            },
+            {
+              "name": "studies",
+              "value": "MACD"
+            },
+            {
+              "name": "width",
+              "value": "800"
+            },
+            {
+              "name": "height",
+              "value": "500"
+            },
+            {
+              "name": "theme",
+              "value": "dark"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "a27f16a3-0919-4f6c-8814-14caf6215368",
+      "name": "Fetch NQ Chart Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.chart-img.com/v1/tradingview/advanced-chart",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "CME_MINI:ES1!"
+            },
+            {
+              "name": "interval",
+              "value": "15m"
+            },
+            {
+              "name": "studies",
+              "value": "MACD"
+            },
+            {
+              "name": "width",
+              "value": "800"
+            },
+            {
+              "name": "height",
+              "value": "500"
+            },
+            {
+              "name": "theme",
+              "value": "dark"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "es-chart-fetch",
+      "name": "Fetch ES Chart Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.chart-img.com/v1/tradingview/advanced-chart",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "COMEX:SI1!"
+            },
+            {
+              "name": "interval",
+              "value": "15m"
+            },
+            {
+              "name": "studies",
+              "value": "MACD"
+            },
+            {
+              "name": "width",
+              "value": "800"
+            },
+            {
+              "name": "height",
+              "value": "500"
+            },
+            {
+              "name": "theme",
+              "value": "dark"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "e2a56ba0-2cfc-4cdf-aae7-5549b267a2d7",
+      "name": "Fetch Silver Chart Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.chart-img.com/v1/tradingview/advanced-chart",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "BITSTAMP:BTCUSD"
+            },
+            {
+              "name": "interval",
+              "value": "15m"
+            },
+            {
+              "name": "studies",
+              "value": "MACD"
+            },
+            {
+              "name": "width",
+              "value": "800"
+            },
+            {
+              "name": "height",
+              "value": "500"
+            },
+            {
+              "name": "theme",
+              "value": "dark"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "072ac695-b161-47ba-b379-f19e6d3bbfe8",
+      "name": "Fetch BTC Chart Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"gc5min\": {{ JSON.stringify($('Fetch Gold 5min Data').first().json) }},\n  \"gc60min\": {{ JSON.stringify($('Fetch Gold 60min Data').first().json) }},\n  \"nq5min\": {{ JSON.stringify($('Fetch NQ 5min Data').first().json) }},\n  \"nq60min\": {{ JSON.stringify($('Fetch NQ 60min Data').first().json) }},\n  \"es5min\": {{ JSON.stringify($('Fetch ES 5min Data').first().json) }},\n  \"es60min\": {{ JSON.stringify($('Fetch ES 60min Data').first().json) }},\n  \"silver5min\": {{ JSON.stringify($('Fetch Silver 5min Data').first().json) }},\n  \"silver60min\": {{ JSON.stringify($('Fetch Silver 60min Data').first().json) }},\n  \"btc5min\": {{ JSON.stringify($('Fetch BTC 5min Data').first().json) }},\n  \"btc60min\": {{ JSON.stringify($('Fetch BTC 60min Data').first().json) }},\n  \"calendar\": {{ JSON.stringify($('Parse Calendar XML').first().json) }},\n  \"gcDaily\": {{ JSON.stringify($('Fetch Gold Daily Data').first().json) }},\n  \"nqDaily\": {{ JSON.stringify($('Fetch NQ Daily Data').first().json) }},\n  \"esDaily\": {{ JSON.stringify($('Fetch ES Daily Data').first().json) }},\n  \"silverDaily\": {{ JSON.stringify($('Fetch Silver Daily Data').first().json) }},\n  \"btcDaily\": {{ JSON.stringify($('Fetch BTC Daily Data').first().json) }}\n}",
+        "options": {}
+      },
+      "id": "11a868be-d840-4bef-982e-88dddf416f68",
+      "name": "Merge All Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        420,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst calendarData = input.calendar;\n\n// ==================== HELPER FUNCTIONS ====================\n\nfunction calculateEMA(closes, period) {\n  if (closes.length < period) return null;\n  const multiplier = 2 / (period + 1);\n  let ema = closes.slice(0, period).reduce((a, b) => a + b, 0) / period;\n  for (let i = period; i < closes.length; i++) {\n    ema = (closes[i] - ema) * multiplier + ema;\n  }\n  return ema;\n}\n\nfunction calculateEMAArray(closes, period) {\n  if (closes.length < period) return [];\n  const multiplier = 2 / (period + 1);\n  let ema = closes.slice(0, period).reduce((a, b) => a + b, 0) / period;\n  const emas = new Array(period - 1).fill(null);\n  emas.push(ema);\n  for (let i = period; i < closes.length; i++) {\n    ema = (closes[i] - ema) * multiplier + ema;\n    emas.push(ema);\n  }\n  return emas;\n}\n\nfunction aggregateBars(bars5min, factor) {\n  const aggregated = [];\n  for (let i = 0; i < bars5min.length; i += factor) {\n    const chunk = bars5min.slice(i, i + factor);\n    if (chunk.length === factor) {\n      aggregated.push({\n        datetime: chunk[0].datetime,\n        open: parseFloat(chunk[0].open),\n        high: Math.max(...chunk.map(b => parseFloat(b.high))),\n        low: Math.min(...chunk.map(b => parseFloat(b.low))),\n        close: parseFloat(chunk[chunk.length - 1].close),\n        volume: chunk.reduce((sum, b) => sum + (parseInt(b.volume) || 0), 0)\n      });\n    }\n  }\n  return aggregated;\n}\n\nfunction findSwingPoints(bars) {\n  const swingHighs = [];\n  const swingLows = [];\n  for (let i = 1; i < bars.length - 1; i++) {\n    const prev = bars[i - 1];\n    const curr = bars[i];\n    const next = bars[i + 1];\n    if (parseFloat(curr.high) > parseFloat(prev.high) && parseFloat(curr.high) > parseFloat(next.high)) {\n      swingHighs.push({ price: parseFloat(curr.high), time: curr.datetime, index: i });\n    }\n    if (parseFloat(curr.low) < parseFloat(prev.low) && parseFloat(curr.low) < parseFloat(next.low)) {\n      swingLows.push({ price: parseFloat(curr.low), time: curr.datetime, index: i });\n    }\n  }\n  return { swingHighs, swingLows };\n}\n\nfunction detectConsolidation(bars, lookback) {\n  lookback = lookback || 10;\n  if (bars.length < lookback + 1) return { isConsolidating: false, ratio: 1 };\n  const trueRanges = [];\n  for (let i = 1; i < bars.length; i++) {\n    const high = parseFloat(bars[i].high);\n    const low = parseFloat(bars[i].low);\n    const prevClose = parseFloat(bars[i - 1].close);\n    const tr = Math.max(high - low, Math.abs(high - prevClose), Math.abs(low - prevClose));\n    trueRanges.push(tr);\n  }\n  const avgTR = trueRanges.reduce((a, b) => a + b, 0) / trueRanges.length;\n  const recentTRs = trueRanges.slice(-lookback);\n  const recentAvgTR = recentTRs.reduce((a, b) => a + b, 0) / recentTRs.length;\n  const ratio = recentAvgTR / avgTR;\n  return { isConsolidating: ratio < 0.6, ratio: ratio.toFixed(2) };\n}\n\n// Determine session based on timestamp hour\n// isUTC: true for forex/crypto (XAU, XAG, BTC), false for CME futures (ES, NQ)\nfunction getSession(datetime, isUTC) {\n  const parts = datetime.split(' ');\n  if (parts.length < 2) return 'unknown';\n  const hour = parseInt(parts[1].split(':')[0]);\n  if (isUTC) {\n    // UTC timestamps: Tokyo ~22:00-07:00, London ~07:00-13:00, Pre-NY ~13:00+\n    if (hour >= 22 || hour < 7) return 'tokyo';\n    if (hour >= 7 && hour < 13) return 'london';\n    return 'preNY';\n  } else {\n    // ET timestamps: Tokyo ~18:00-02:00, London ~02:00-08:00, Pre-NY ~08:00+\n    if (hour >= 18 || hour < 2) return 'tokyo';\n    if (hour >= 2 && hour < 8) return 'london';\n    return 'preNY';\n  }\n}\n\n// Calculate EMA slope direction\nfunction emaSlope(closes, period, lookback) {\n  lookback = lookback || 5;\n  if (closes.length < period + lookback) return 'N/A';\n  const emas = calculateEMAArray(closes, period);\n  const recent = emas.slice(-lookback).filter(function(v) { return v !== null; });\n  if (recent.length < 2) return 'N/A';\n  const diff = recent[recent.length - 1] - recent[0];\n  const avgPrice = recent.reduce(function(a, b) { return a + b; }, 0) / recent.length;\n  const pctChange = (diff / avgPrice) * 100;\n  if (pctChange > 0.02) return 'RISING';\n  if (pctChange < -0.02) return 'FALLING';\n  return 'FLAT';\n}\n\n// ==================== MAIN ANALYSIS FUNCTION ====================\n\nfunction analyzeInstrument(data5min, data60min, dailyData, instrumentName) {\n  if (!data5min || !data5min.values || data5min.values.length === 0) {\n    return { instrument: instrumentName, error: 'No data available', bias: 'UNKNOWN' };\n  }\n\n  // Determine if timestamps are UTC or ET\n  var isUTC = instrumentName.toLowerCase().indexOf('gold') >= 0 ||\n              instrumentName.toLowerCase().indexOf('silver') >= 0 ||\n              instrumentName.toLowerCase().indexOf('btc') >= 0;\n\n  // TwelveData returns newest first, reverse for chronological\n  var bars5min = data5min.values.slice().reverse();\n  var bars60min = data60min && data60min.values ? data60min.values.slice().reverse() : [];\n\n  // Aggregate to 10min and 15min\n  var bars10min = aggregateBars(bars5min, 2);\n  var bars15min = aggregateBars(bars5min, 3);\n\n  // Calculate EMAs\n  var closes5min = bars5min.map(function(b) { return parseFloat(b.close); });\n  var closes10min = bars10min.map(function(b) { return b.close; });\n  var closes15min = bars15min.map(function(b) { return b.close; });\n  var closes60min = bars60min.map(function(b) { return parseFloat(b.close); });\n\n  var ema21_10min = calculateEMA(closes10min, 21);\n  var ema21_15min = calculateEMA(closes15min, 21);\n  var ema21_60min = calculateEMA(closes60min, 21);\n\n  // EMA slopes\n  var slope10 = emaSlope(closes10min, 21);\n  var slope15 = emaSlope(closes15min, 21);\n  var slope60 = emaSlope(closes60min, 21);\n\n  // Decimal places\n  var isBTC = instrumentName.toLowerCase().indexOf('btc') >= 0;\n  var isSilver = instrumentName.toLowerCase().indexOf('silver') >= 0;\n  var isES = instrumentName.toLowerCase().indexOf('es') >= 0 || instrumentName.toLowerCase().indexOf('s&p') >= 0;\n  var isNQ = instrumentName.toLowerCase().indexOf('nq') >= 0 || instrumentName.toLowerCase().indexOf('nasdaq') >= 0;\n  var decimals = isBTC ? 0 : (isSilver ? 3 : 2);\n\n  // ===== SESSION ANALYSIS USING REAL HOURS =====\n  var tokyoBars = bars5min.filter(function(b) { return getSession(b.datetime, isUTC) === 'tokyo'; });\n  var londonBars = bars5min.filter(function(b) { return getSession(b.datetime, isUTC) === 'london'; });\n  var preNYBars = bars5min.filter(function(b) { return getSession(b.datetime, isUTC) === 'preNY'; });\n\n  function sessionStats(bars, name) {\n    if (!bars || bars.length === 0) return { session: name, high: 'N/A', low: 'N/A', open: 'N/A', close: 'N/A', bias: 'NO DATA', range: 'N/A', barCount: 0 };\n    var highs = bars.map(function(b) { return parseFloat(b.high); });\n    var lows = bars.map(function(b) { return parseFloat(b.low); });\n    var open = parseFloat(bars[0].open);\n    var close = parseFloat(bars[bars.length - 1].close);\n    var high = Math.max.apply(null, highs);\n    var low = Math.min.apply(null, lows);\n    return {\n      session: name,\n      high: high.toFixed(decimals),\n      low: low.toFixed(decimals),\n      open: open.toFixed(decimals),\n      close: close.toFixed(decimals),\n      range: (high - low).toFixed(decimals),\n      bias: close > open ? 'BULLISH' : close < open ? 'BEARISH' : 'NEUTRAL',\n      barCount: bars.length\n    };\n  }\n\n  var tokyoStats = sessionStats(tokyoBars, 'Tokyo');\n  var londonStats = sessionStats(londonBars, 'London');\n  var preNYStats = sessionStats(preNYBars, 'Pre-NY');\n\n  // Overall stats\n  var allHighs = bars5min.map(function(b) { return parseFloat(b.high); });\n  var allLows = bars5min.map(function(b) { return parseFloat(b.low); });\n  var sessionHigh = Math.max.apply(null, allHighs);\n  var sessionLow = Math.min.apply(null, allLows);\n  var sessionOpen = parseFloat(bars5min[0].open);\n  var sessionClose = parseFloat(bars5min[bars5min.length - 1].close);\n  var priceChange = sessionClose - sessionOpen;\n  var percentChange = ((priceChange / sessionOpen) * 100);\n\n  // ===== PREVIOUS DAY LEVELS (PDH/PDL/PDC) =====\n  var pdh = 'N/A', pdl = 'N/A', pdc = 'N/A';\n  var priceVsPDH = 'N/A', priceVsPDL = 'N/A', priceVsPDC = 'N/A';\n  var gapFromPDC = 'N/A';\n\n  if (dailyData && dailyData.values && dailyData.values.length >= 2) {\n    var prevDay = dailyData.values[1]; // values[0] = today partial, values[1] = prev day\n    pdh = parseFloat(prevDay.high).toFixed(decimals);\n    pdl = parseFloat(prevDay.low).toFixed(decimals);\n    pdc = parseFloat(prevDay.close).toFixed(decimals);\n\n    priceVsPDH = ((sessionClose - parseFloat(prevDay.high)) / parseFloat(prevDay.high) * 100).toFixed(3) + '%';\n    priceVsPDL = ((sessionClose - parseFloat(prevDay.low)) / parseFloat(prevDay.low) * 100).toFixed(3) + '%';\n    priceVsPDC = ((sessionClose - parseFloat(prevDay.close)) / parseFloat(prevDay.close) * 100).toFixed(3) + '%';\n\n    var gap = sessionOpen - parseFloat(prevDay.close);\n    gapFromPDC = gap.toFixed(decimals) + ' (' + ((gap / parseFloat(prevDay.close)) * 100).toFixed(3) + '%)';\n  }\n\n  // Swing points from 15min bars\n  var swingPoints = findSwingPoints(bars15min);\n\n  // Consolidation detection\n  var consolidation = detectConsolidation(bars15min);\n\n  // Price vs EMAs\n  var currentPrice = sessionClose;\n  var priceVsEMA10 = ema21_10min ? ((currentPrice - ema21_10min) / ema21_10min * 100).toFixed(3) : null;\n  var priceVsEMA15 = ema21_15min ? ((currentPrice - ema21_15min) / ema21_15min * 100).toFixed(3) : null;\n  var priceVsEMA60 = ema21_60min ? ((currentPrice - ema21_60min) / ema21_60min * 100).toFixed(3) : null;\n\n  // EMA proximity alert (within 0.1% of 15min EMA)\n  var emaProximity15 = priceVsEMA15 ? Math.abs(parseFloat(priceVsEMA15)) < 0.1 : false;\n\n  return {\n    instrument: instrumentName,\n    symbol: data5min.meta ? data5min.meta.symbol : instrumentName,\n    currentPrice: currentPrice.toFixed(decimals),\n    overall: {\n      open: sessionOpen.toFixed(decimals),\n      high: sessionHigh.toFixed(decimals),\n      low: sessionLow.toFixed(decimals),\n      close: sessionClose.toFixed(decimals),\n      range: (sessionHigh - sessionLow).toFixed(decimals),\n      change: priceChange.toFixed(decimals),\n      percentChange: percentChange.toFixed(3)\n    },\n    previousDay: {\n      high: pdh,\n      low: pdl,\n      close: pdc,\n      priceVsPDH: priceVsPDH,\n      priceVsPDL: priceVsPDL,\n      priceVsPDC: priceVsPDC,\n      gapFromPDC: gapFromPDC\n    },\n    tokyo: tokyoStats,\n    london: londonStats,\n    preNY: preNYStats,\n    emaLevels: {\n      ema21_10min: ema21_10min ? ema21_10min.toFixed(decimals) : 'N/A',\n      ema21_15min: ema21_15min ? ema21_15min.toFixed(decimals) : 'N/A',\n      ema21_60min: ema21_60min ? ema21_60min.toFixed(decimals) : 'N/A',\n      slope10min: slope10,\n      slope15min: slope15,\n      slope60min: slope60,\n      priceVsEMA10: priceVsEMA10 ? priceVsEMA10 + '%' : 'N/A',\n      priceVsEMA15: priceVsEMA15 ? priceVsEMA15 + '%' : 'N/A',\n      priceVsEMA60: priceVsEMA60 ? priceVsEMA60 + '%' : 'N/A',\n      emaProximityAlert15: emaProximity15 ? 'PRICE NEAR 15min 21 EMA - WATCH FOR RETEST' : 'Price away from 15min EMA'\n    },\n    swingPoints: {\n      recentHighs: swingPoints.swingHighs.slice(-3).map(function(s) { return { price: s.price.toFixed(decimals), time: s.time }; }),\n      recentLows: swingPoints.swingLows.slice(-3).map(function(s) { return { price: s.price.toFixed(decimals), time: s.time }; })\n    },\n    consolidation: {\n      is15minConsolidating: consolidation.isConsolidating,\n      atrRatio: consolidation.ratio,\n      warning: consolidation.isConsolidating ? 'CAUTION: 15min consolidating - AVOID EMA retest setups' : 'OK: Normal volatility'\n    },\n    bias: priceChange > 0 ? 'BULLISH' : priceChange < 0 ? 'BEARISH' : 'NEUTRAL',\n    barsAnalyzed: {\n      '5min': bars5min.length, '10min': bars10min.length, '15min': bars15min.length,\n      '60min': bars60min.length, 'tokyo': tokyoBars.length, 'london': londonBars.length, 'preNY': preNYBars.length\n    }\n  };\n}\n\n// ==================== ANALYZE ALL INSTRUMENTS ====================\n\nvar gcAnalysis = analyzeInstrument(input.gc5min, input.gc60min, input.gcDaily, 'Gold (GC)');\nvar nqAnalysis = analyzeInstrument(input.nq5min, input.nq60min, input.nqDaily, 'Nasdaq (NQ)');\nvar esAnalysis = analyzeInstrument(input.es5min, input.es60min, input.esDaily, 'S&P 500 (ES)');\nvar silverAnalysis = analyzeInstrument(input.silver5min, input.silver60min, input.silverDaily, 'Silver (SI)');\nvar btcAnalysis = analyzeInstrument(input.btc5min, input.btc60min, input.btcDaily, 'Bitcoin (BTC)');\n\n// Calendar events (all impact levels, sorted high first)\nvar allEvents = calendarData && calendarData.economicCalendar ? calendarData.economicCalendar : [];\nvar impactEvents = allEvents.map(function(event) {\n  return {\n    time: event.time || 'TBA',\n    event: event.title || event.event || event.name || 'Unknown Event',\n    forecast: event.forecast || '-',\n    previous: event.previous || '-',\n    actual: event.actual || '-',\n    impact: event.impact || 'MEDIUM'\n  };\n}).slice(0, 15);\n\nreturn {\n  json: {\n    timestamp: new Date().toISOString(),\n    gc: gcAnalysis,\n    nq: nqAnalysis,\n    es: esAnalysis,\n    silver: silverAnalysis,\n    btc: btcAnalysis,\n    impactNews: impactEvents,\n    totalNewsEvents: allEvents.length\n  }\n};"
+      },
+      "id": "1e00daec-3f2c-4e51-ad76-6500c3193f23",
+      "name": "Process Market Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Encode chart images to base64\nconst gcChart = $('Fetch GC Chart Image').first();\nconst nqChart = $('Fetch NQ Chart Image').first();\nconst esChart = $('Fetch ES Chart Image').first();\nconst silverChart = $('Fetch Silver Chart Image').first();\nconst btcChart = $('Fetch BTC Chart Image').first();\n\nfunction getBase64(item) {\n  try {\n    if (item.binary && item.binary.data) {\n      return item.binary.data.data; // Already base64 in n8n\n    }\n    return null;\n  } catch (e) {\n    return null;\n  }\n}\n\nreturn {\n  json: {\n    gcChartBase64: getBase64(gcChart),\n    nqChartBase64: getBase64(nqChart),\n    esChartBase64: getBase64(esChart),\n    silverChartBase64: getBase64(silverChart),\n    btcChartBase64: getBase64(btcChart)\n  }\n};"
+      },
+      "id": "encode-charts-base64",
+      "name": "Encode Charts to Base64",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are an expert futures and crypto day trader specializing in GC (Gold), NQ (Nasdaq E-mini), ES (S&P E-mini), Silver (SI), and Bitcoin (BTC). You analyze overnight price action from Tokyo and London sessions to provide actionable trading insights for the upcoming NY session.\n\nThe trader uses the following strategies:\n\n**NY SESSION STRATEGY (EMA Retests):**\n- Trades retests of the 21 EMA on 10/15/60 min timeframes (plotted on 3 min chart)\n- Signal candle wick touching EMA must be 25% larger than opposite wick\n- Confluence: BB midline cross within one candle of retest\n- Triple confluence: Both 10 and 15 min EMA retest + BB midline cross\n- CRITICAL: Do NOT take setups if 15 min is consolidating (ATR ratio < 0.6)\n- Stop loss: Back of signal candle\n- Take profit: 3 or 15 min swing OR 2:1 RR\n\n**ASIAN SESSION STRATEGY (Swing Point Failures):**\n- Trade SFPs in direction of trend\n- Need BB midline cross + at least 1 retest as confluence\n- Stop loss: Back of SFP signal candle\n- Take profit: 3 or 15 min swing OR 2:1 RR\n\n**KEY LEVEL ANALYSIS (Previous Day High/Low/Close):**\n- PDH and PDL act as key support/resistance zones\n- Price opening above PDH = bullish bias; below PDL = bearish bias\n- PDC is a pivot: price above = bullish lean, below = bearish lean\n- Look for reactions/rejections at PDH/PDL/PDC during NY session\n- Gaps from PDC to current open often get filled - note gap direction and size\n- When PDH/PDL aligns with an EMA level, that creates HIGH confluence\n\n**IMPORTANT ANALYSIS RULES:**\n- Session data (Tokyo, London, Pre-NY) uses ACTUAL session time boundaries, not estimates\n- EMA slopes tell you trend direction: RISING = bullish EMA, FALLING = bearish, FLAT = no trend\n- Proximity alerts flag when price is within 0.1% of the 15min 21 EMA (imminent retest potential)\n- Consolidation warnings mean AVOID EMA retest setups on that instrument\n- Grade setups A+ through C based on confluence level\n\nYour analysis should be specific, graded, and actionable. Use clear formatting with headers and bullet points.",
+              "role": "system"
+            },
+            {
+              "content": "=Analyze the following overnight data and provide a detailed, graded trading plan for today's NY session:\n\n## GOLD (GC) Overnight Data:\n{{ JSON.stringify($json.gc, null, 2) }}\n\n## NASDAQ (NQ) Overnight Data:\n{{ JSON.stringify($json.nq, null, 2) }}\n\n## S&P 500 (ES) Overnight Data:\n{{ JSON.stringify($json.es, null, 2) }}\n\n## SILVER (SI) Overnight Data:\n{{ JSON.stringify($json.silver, null, 2) }}\n\n## BITCOIN (BTC) Overnight Data:\n{{ JSON.stringify($json.btc, null, 2) }}\n\n## Economic Events Today (High & Medium Impact):\n{{ JSON.stringify($json.impactNews, null, 2) }}\n\n---\n\nPlease provide your analysis in these sections:\n\n### 1. OVERNIGHT SESSION RECAP\nFor each instrument, summarize what happened in Tokyo, London, and Pre-NY sessions separately. Note the bias, range, and any notable price action for each session. Use the actual session data provided.\n\n### 2. PREVIOUS DAY KEY LEVELS (PDH/PDL/PDC)\nFor each instrument, list the PDH, PDL, and PDC. State whether current price is above/below each level and what that implies for directional bias. Note the gap from PDC to overnight open and whether gap fill is likely.\n\n### 3. EMA RETEST ZONES (21 EMA Levels)\nFor each instrument, list the exact 10/15/60 min EMA levels with their slope direction (RISING/FALLING/FLAT) and distance from current price. Highlight any proximity alerts where price is near the 15min 21 EMA. Note where EMA levels align with PDH/PDL/PDC for high confluence.\n\n### 4. SWING POINTS (For SFP Setups)\nIdentify key swing highs/lows from overnight that could be swept for SFP entries during NY session.\n\n### 5. CONSOLIDATION WARNINGS\nFlag any instruments where 15min is consolidating. These MUST avoid EMA retest setups. Suggest alternative approaches for consolidating instruments.\n\n### 6. BIAS & CONFIDENCE\nFor each instrument state BULLISH/BEARISH/NEUTRAL with confidence % and brief reasoning based on:\n- Overnight session direction and momentum\n- Position relative to PDH/PDL/PDC\n- EMA slope alignment across timeframes\n- Consolidation status\n\n### 7. GRADED TRADING PLAN\nList specific setups graded A+ through C:\n- **A+** = Triple confluence (10+15 EMA retest + BB midline + PDH/PDL nearby + all EMAs aligned in trend direction)\n- **A** = Double confluence (EMA retest + BB midline cross + trending market)\n- **B** = Single confluence (EMA retest only or SFP only)\n- **C** = Low confluence (skip unless nothing else)\n\nFor each setup include:\n- Grade and instrument\n- Setup type (EMA Retest or SFP)\n- Entry zone (specific price level)\n- What confirmation to watch for (BB midline cross, wick ratio)\n- Stop loss (specific price)\n- Take profit targets (specific prices or swing levels)\n- Estimated Risk:Reward ratio\n- Any overlapping news risk\n\n### 8. NEWS RISK WINDOWS\nList specific times to go flat or avoid new entries. Include both HIGH and MEDIUM impact events. Note which instruments are most affected by each event."
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 8000,
+          "temperature": 0.2
+        }
+      },
+      "id": "b3ba029b-503b-4420-8737-b31667725e35",
+      "name": "AI Trading Analysis",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        880,
+        160
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const analysis = $('AI Trading Analysis').first().json;\nconst marketData = $('Process Market Data').first().json;\nconst chartData = $('Encode Charts to Base64').first().json;\n\nconst today = new Date().toLocaleDateString('en-US', {\n  weekday: 'long',\n  year: 'numeric',\n  month: 'long',\n  day: 'numeric'\n});\n\nconst currentTime = new Date().toLocaleTimeString('en-US', {\n  hour: '2-digit',\n  minute: '2-digit',\n  timeZone: 'America/Los_Angeles'\n});\n\n// Format news table with impact color coding\nvar newsTable = '';\nif (marketData.impactNews && marketData.impactNews.length > 0) {\n  newsTable = '<table style=\"width:100%; border-collapse: collapse; margin: 20px 0; font-size: 14px;\">' +\n    '<tr style=\"background-color: #1a1a2e; color: white;\">' +\n    '<th style=\"padding: 12px; border: 1px solid #ddd; text-align: left;\">Time (ET)</th>' +\n    '<th style=\"padding: 12px; border: 1px solid #ddd; text-align: left;\">Event</th>' +\n    '<th style=\"padding: 12px; border: 1px solid #ddd; text-align: center;\">Impact</th>' +\n    '<th style=\"padding: 12px; border: 1px solid #ddd; text-align: center;\">Forecast</th>' +\n    '<th style=\"padding: 12px; border: 1px solid #ddd; text-align: center;\">Previous</th>' +\n    '</tr>';\n  marketData.impactNews.forEach(function(event) {\n    var impactColor = event.impact === 'HIGH' ? '#e74c3c' : '#f39c12';\n    var impactBadge = '<span style=\"background: ' + impactColor + '; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;\">' + event.impact + '</span>';\n    newsTable += '<tr>' +\n      '<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: bold;\">' + event.time + '</td>' +\n      '<td style=\"padding: 10px; border: 1px solid #ddd;\">' + event.event + '</td>' +\n      '<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + impactBadge + '</td>' +\n      '<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + event.forecast + '</td>' +\n      '<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + event.previous + '</td>' +\n      '</tr>';\n  });\n  newsTable += '</table>';\n} else {\n  newsTable = '<div style=\"background: #d4edda; padding: 15px; border-radius: 8px; color: #155724;\">No significant US news scheduled for today. Lower volatility expected.</div>';\n}\n\nvar getColor = function(bias) { return bias === 'BULLISH' ? '#27ae60' : bias === 'BEARISH' ? '#e74c3c' : '#f39c12'; };\nvar getEmoji = function(bias) { return bias === 'BULLISH' ? '\\u{1F7E2}' : bias === 'BEARISH' ? '\\u{1F534}' : '\\u{1F7E1}'; };\nvar getConsolidationBadge = function(isConsolidating) {\n  return isConsolidating\n    ? '<span style=\"background: #e74c3c; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px;\">CONSOLIDATING</span>'\n    : '<span style=\"background: #27ae60; color: white; padding: 2px 6px; border-radius: 4px; font-size: 10px;\">VOLATILE</span>';\n};\nvar getSlopeBadge = function(slope) {\n  if (slope === 'RISING') return '<span style=\"color: #27ae60; font-weight: bold;\">\\u2191 RISING</span>';\n  if (slope === 'FALLING') return '<span style=\"color: #e74c3c; font-weight: bold;\">\\u2193 FALLING</span>';\n  return '<span style=\"color: #f39c12; font-weight: bold;\">\\u2194 FLAT</span>';\n};\n\nvar gcBias = marketData.gc && marketData.gc.bias ? marketData.gc.bias : 'NEUTRAL';\nvar nqBias = marketData.nq && marketData.nq.bias ? marketData.nq.bias : 'NEUTRAL';\nvar esBias = marketData.es && marketData.es.bias ? marketData.es.bias : 'NEUTRAL';\nvar silverBias = marketData.silver && marketData.silver.bias ? marketData.silver.bias : 'NEUTRAL';\nvar btcBias = marketData.btc && marketData.btc.bias ? marketData.btc.bias : 'NEUTRAL';\n\n// Format AI analysis content\nvar aiContent = analysis.message ? analysis.message.content : (analysis.text || analysis.content || 'Analysis not available');\naiContent = aiContent\n  .replace(/### (.*)/g, '<h3 style=\"color: #1a1a2e; margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 8px;\">$1</h3>')\n  .replace(/## (.*)/g, '<h2 style=\"color: #1a1a2e; margin-top: 25px;\">$1</h2>')\n  .replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')\n  .replace(/\\n/g, '<br>');\n\n// Build chart images HTML\nvar chartsHtml = '<div style=\"margin-bottom: 30px;\"><h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">Chart Analysis</h2>';\nvar chartItems = [\n  { name: 'Gold (GC)', base64: chartData.gcChartBase64 },\n  { name: 'Nasdaq (NQ)', base64: chartData.nqChartBase64 },\n  { name: 'S&P 500 (ES)', base64: chartData.esChartBase64 },\n  { name: 'Silver (SI)', base64: chartData.silverChartBase64 },\n  { name: 'Bitcoin (BTC)', base64: chartData.btcChartBase64 }\n];\nchartItems.forEach(function(chart) {\n  if (chart.base64) {\n    chartsHtml += '<div style=\"margin-bottom: 20px;\">' +\n      '<h4 style=\"color: #1a1a2e; margin: 0 0 10px;\">' + chart.name + '</h4>' +\n      '<img src=\"data:image/png;base64,' + chart.base64 + '\" style=\"max-width: 100%; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);\" alt=\"' + chart.name + ' Chart\" />' +\n      '</div>';\n  }\n});\nchartsHtml += '</div>';\n\n// Helper to safely get nested values\nfunction val(obj) {\n  var path = Array.prototype.slice.call(arguments, 1);\n  var current = obj;\n  for (var i = 0; i < path.length; i++) {\n    if (current == null) return 'N/A';\n    current = current[path[i]];\n  }\n  return current != null ? current : 'N/A';\n}\n\nvar emailHtml = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head>' +\n'<body style=\"font-family: \\'Segoe UI\\', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px;\">' +\n'<div style=\"max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);\">' +\n\n// Header\n'<div style=\"background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 35px; text-align: center;\">' +\n'<h1 style=\"margin: 0; font-size: 28px; font-weight: 600;\">Pre-Market Analysis</h1>' +\n'<p style=\"margin: 12px 0 0; opacity: 0.9; font-size: 16px;\">' + today + '</p>' +\n'<p style=\"margin: 5px 0 0; opacity: 0.7; font-size: 14px;\">Generated at ' + currentTime + ' PST | NY Session Preview</p>' +\n'</div>' +\n\n// Bias Summary Cards\n'<div style=\"padding: 25px; background: #f8f9fa;\">' +\n'<table style=\"width: 100%; border-collapse: separate; border-spacing: 8px;\"><tr>' +\n'<td style=\"width: 20%; background: ' + getColor(gcBias) + '; padding: 15px 10px; border-radius: 10px; text-align: center; color: white;\">' +\n'<div style=\"font-size: 11px; opacity: 0.9; margin-bottom: 5px;\">GOLD (GC)</div>' +\n'<div style=\"font-size: 20px; font-weight: bold;\">' + gcBias + '</div>' +\n'<div style=\"font-size: 14px; margin-top: 5px;\">' + val(marketData, 'gc', 'overall', 'percentChange') + '%</div>' +\n'<div style=\"margin-top: 5px;\">' + getConsolidationBadge(val(marketData, 'gc', 'consolidation', 'is15minConsolidating')) + '</div>' +\n'</td>' +\n'<td style=\"width: 20%; background: ' + getColor(nqBias) + '; padding: 15px 10px; border-radius: 10px; text-align: center; color: white;\">' +\n'<div style=\"font-size: 11px; opacity: 0.9; margin-bottom: 5px;\">NASDAQ (NQ)</div>' +\n'<div style=\"font-size: 20px; font-weight: bold;\">' + nqBias + '</div>' +\n'<div style=\"font-size: 14px; margin-top: 5px;\">' + val(marketData, 'nq', 'overall', 'percentChange') + '%</div>' +\n'<div style=\"margin-top: 5px;\">' + getConsolidationBadge(val(marketData, 'nq', 'consolidation', 'is15minConsolidating')) + '</div>' +\n'</td>' +\n'<td style=\"width: 20%; background: ' + getColor(esBias) + '; padding: 15px 10px; border-radius: 10px; text-align: center; color: white;\">' +\n'<div style=\"font-size: 11px; opacity: 0.9; margin-bottom: 5px;\">S&P (ES)</div>' +\n'<div style=\"font-size: 20px; font-weight: bold;\">' + esBias + '</div>' +\n'<div style=\"font-size: 14px; margin-top: 5px;\">' + val(marketData, 'es', 'overall', 'percentChange') + '%</div>' +\n'<div style=\"margin-top: 5px;\">' + getConsolidationBadge(val(marketData, 'es', 'consolidation', 'is15minConsolidating')) + '</div>' +\n'</td>' +\n'<td style=\"width: 20%; background: ' + getColor(silverBias) + '; padding: 15px 10px; border-radius: 10px; text-align: center; color: white;\">' +\n'<div style=\"font-size: 11px; opacity: 0.9; margin-bottom: 5px;\">SILVER (SI)</div>' +\n'<div style=\"font-size: 20px; font-weight: bold;\">' + silverBias + '</div>' +\n'<div style=\"font-size: 14px; margin-top: 5px;\">' + val(marketData, 'silver', 'overall', 'percentChange') + '%</div>' +\n'<div style=\"margin-top: 5px;\">' + getConsolidationBadge(val(marketData, 'silver', 'consolidation', 'is15minConsolidating')) + '</div>' +\n'</td>' +\n'<td style=\"width: 20%; background: ' + getColor(btcBias) + '; padding: 15px 10px; border-radius: 10px; text-align: center; color: white;\">' +\n'<div style=\"font-size: 11px; opacity: 0.9; margin-bottom: 5px;\">BITCOIN</div>' +\n'<div style=\"font-size: 20px; font-weight: bold;\">' + btcBias + '</div>' +\n'<div style=\"font-size: 14px; margin-top: 5px;\">' + val(marketData, 'btc', 'overall', 'percentChange') + '%</div>' +\n'<div style=\"margin-top: 5px;\">' + getConsolidationBadge(val(marketData, 'btc', 'consolidation', 'is15minConsolidating')) + '</div>' +\n'</td>' +\n'</tr></table></div>' +\n\n// Main Content\n'<div style=\"padding: 30px;\">' +\n\n// News Section\n'<div style=\"margin-bottom: 30px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">Economic Events Today</h2>' +\nnewsTable +\n'</div>' +\n\n// PDH/PDL/PDC Section (NEW)\n'<div style=\"margin-bottom: 30px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">Previous Day Key Levels (PDH / PDL / PDC)</h2>' +\n'<table style=\"width: 100%; border-collapse: collapse; font-size: 13px;\">' +\n'<tr style=\"background: #1a1a2e; color: white;\">' +\n'<th style=\"padding: 10px; text-align: left; border: 1px solid #ddd;\">Instrument</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">Current</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">PDH</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">PDL</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">PDC</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">Gap from PDC</th>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Gold (GC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'gc', 'previousDay', 'high') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'gc', 'previousDay', 'low') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'previousDay', 'close') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'previousDay', 'gapFromPDC') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Nasdaq (NQ)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'nq', 'previousDay', 'high') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'nq', 'previousDay', 'low') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'previousDay', 'close') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'previousDay', 'gapFromPDC') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">S&P 500 (ES)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'es', 'previousDay', 'high') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'es', 'previousDay', 'low') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'previousDay', 'close') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'previousDay', 'gapFromPDC') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Silver (SI)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'silver', 'previousDay', 'high') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'silver', 'previousDay', 'low') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'previousDay', 'close') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'previousDay', 'gapFromPDC') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Bitcoin (BTC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'btc', 'previousDay', 'high') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'btc', 'previousDay', 'low') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'previousDay', 'close') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'previousDay', 'gapFromPDC') + '</td>' +\n'</tr>' +\n'</table></div>' +\n\n// EMA Levels Section with Slopes\n'<div style=\"margin-bottom: 30px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">21 EMA Retest Zones</h2>' +\n'<table style=\"width: 100%; border-collapse: collapse; font-size: 13px;\">' +\n'<tr style=\"background: #1a1a2e; color: white;\">' +\n'<th style=\"padding: 10px; text-align: left; border: 1px solid #ddd;\">Instrument</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">Current</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">10min EMA</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">15min EMA</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">60min EMA</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">15min Slope</th>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Gold (GC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'emaLevels', 'ema21_10min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'emaLevels', 'ema21_15min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'emaLevels', 'ema21_60min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + getSlopeBadge(val(marketData, 'gc', 'emaLevels', 'slope15min')) + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Nasdaq (NQ)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'emaLevels', 'ema21_10min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'emaLevels', 'ema21_15min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'emaLevels', 'ema21_60min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + getSlopeBadge(val(marketData, 'nq', 'emaLevels', 'slope15min')) + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">S&P 500 (ES)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'emaLevels', 'ema21_10min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'emaLevels', 'ema21_15min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'emaLevels', 'ema21_60min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + getSlopeBadge(val(marketData, 'es', 'emaLevels', 'slope15min')) + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Silver (SI)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'emaLevels', 'ema21_10min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'emaLevels', 'ema21_15min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'emaLevels', 'ema21_60min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + getSlopeBadge(val(marketData, 'silver', 'emaLevels', 'slope15min')) + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Bitcoin (BTC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'currentPrice') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'emaLevels', 'ema21_10min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'emaLevels', 'ema21_15min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'emaLevels', 'ema21_60min') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center;\">' + getSlopeBadge(val(marketData, 'btc', 'emaLevels', 'slope15min')) + '</td>' +\n'</tr>' +\n'</table></div>' +\n\n// Swing Points Section\n'<div style=\"margin-bottom: 30px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">Overnight Swing Points (SFP Targets)</h2>' +\n'<table style=\"width: 100%; border-collapse: collapse; font-size: 13px;\">' +\n'<tr style=\"background: #1a1a2e; color: white;\">' +\n'<th style=\"padding: 10px; text-align: left; border: 1px solid #ddd;\">Instrument</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">Recent Swing Highs</th>' +\n'<th style=\"padding: 10px; text-align: center; border: 1px solid #ddd;\">Recent Swing Lows</th>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Gold (GC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + (marketData.gc && marketData.gc.swingPoints && marketData.gc.swingPoints.recentHighs ? marketData.gc.swingPoints.recentHighs.map(function(h) { return h.price; }).join(', ') : 'N/A') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + (marketData.gc && marketData.gc.swingPoints && marketData.gc.swingPoints.recentLows ? marketData.gc.swingPoints.recentLows.map(function(l) { return l.price; }).join(', ') : 'N/A') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Nasdaq (NQ)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + (marketData.nq && marketData.nq.swingPoints && marketData.nq.swingPoints.recentHighs ? marketData.nq.swingPoints.recentHighs.map(function(h) { return h.price; }).join(', ') : 'N/A') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + (marketData.nq && marketData.nq.swingPoints && marketData.nq.swingPoints.recentLows ? marketData.nq.swingPoints.recentLows.map(function(l) { return l.price; }).join(', ') : 'N/A') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">S&P 500 (ES)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + (marketData.es && marketData.es.swingPoints && marketData.es.swingPoints.recentHighs ? marketData.es.swingPoints.recentHighs.map(function(h) { return h.price; }).join(', ') : 'N/A') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + (marketData.es && marketData.es.swingPoints && marketData.es.swingPoints.recentLows ? marketData.es.swingPoints.recentLows.map(function(l) { return l.price; }).join(', ') : 'N/A') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Silver (SI)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + (marketData.silver && marketData.silver.swingPoints && marketData.silver.swingPoints.recentHighs ? marketData.silver.swingPoints.recentHighs.map(function(h) { return h.price; }).join(', ') : 'N/A') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + (marketData.silver && marketData.silver.swingPoints && marketData.silver.swingPoints.recentLows ? marketData.silver.swingPoints.recentLows.map(function(l) { return l.price; }).join(', ') : 'N/A') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; font-weight: 500;\">Bitcoin (BTC)</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + (marketData.btc && marketData.btc.swingPoints && marketData.btc.swingPoints.recentHighs ? marketData.btc.swingPoints.recentHighs.map(function(h) { return h.price; }).join(', ') : 'N/A') + '</td>' +\n'<td style=\"padding: 10px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + (marketData.btc && marketData.btc.swingPoints && marketData.btc.swingPoints.recentLows ? marketData.btc.swingPoints.recentLows.map(function(l) { return l.price; }).join(', ') : 'N/A') + '</td>' +\n'</tr>' +\n'</table></div>' +\n\n// Session Stats with Tokyo/London/Pre-NY\n'<div style=\"margin-bottom: 30px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">Overnight Session Statistics</h2>' +\n'<table style=\"width: 100%; border-collapse: collapse; font-size: 12px;\">' +\n'<tr style=\"background: #1a1a2e; color: white;\">' +\n'<th style=\"padding: 8px; text-align: left; border: 1px solid #ddd;\">Metric</th>' +\n'<th style=\"padding: 8px; text-align: center; border: 1px solid #ddd;\">GC</th>' +\n'<th style=\"padding: 8px; text-align: center; border: 1px solid #ddd;\">NQ</th>' +\n'<th style=\"padding: 8px; text-align: center; border: 1px solid #ddd;\">ES</th>' +\n'<th style=\"padding: 8px; text-align: center; border: 1px solid #ddd;\">SI</th>' +\n'<th style=\"padding: 8px; text-align: center; border: 1px solid #ddd;\">BTC</th>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 500;\">Open</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'overall', 'open') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'overall', 'open') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'overall', 'open') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'overall', 'open') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'overall', 'open') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 500;\">High</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'gc', 'overall', 'high') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'nq', 'overall', 'high') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'es', 'overall', 'high') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'silver', 'overall', 'high') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #27ae60;\">' + val(marketData, 'btc', 'overall', 'high') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #f8f9fa;\">' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 500;\">Low</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'gc', 'overall', 'low') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'nq', 'overall', 'low') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'es', 'overall', 'low') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'silver', 'overall', 'low') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; color: #e74c3c;\">' + val(marketData, 'btc', 'overall', 'low') + '</td>' +\n'</tr>' +\n'<tr>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 500;\">Range</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'gc', 'overall', 'range') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'nq', 'overall', 'range') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'es', 'overall', 'range') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'silver', 'overall', 'range') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center;\">' + val(marketData, 'btc', 'overall', 'range') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #e8f4fd;\">' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 700;\">Tokyo</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'tokyo', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'tokyo', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'tokyo', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'tokyo', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'tokyo', 'bias') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #fef9e7;\">' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 700;\">London</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'london', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'london', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'london', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'london', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'london', 'bias') + '</td>' +\n'</tr>' +\n'<tr style=\"background: #fbeee6;\">' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; font-weight: 700;\">Pre-NY</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'gc', 'preNY', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'nq', 'preNY', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'es', 'preNY', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'silver', 'preNY', 'bias') + '</td>' +\n'<td style=\"padding: 8px; border: 1px solid #ddd; text-align: center; font-weight: bold;\">' + val(marketData, 'btc', 'preNY', 'bias') + '</td>' +\n'</tr>' +\n'</table></div>' +\n\n// Charts\nchartsHtml +\n\n// AI Analysis\n'<div style=\"margin-bottom: 20px;\">' +\n'<h2 style=\"color: #1a1a2e; font-size: 20px; margin: 0 0 15px;\">AI Trading Analysis</h2>' +\n'<div style=\"background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 25px; border-radius: 10px; border-left: 5px solid #3498db; line-height: 1.8;\">' +\naiContent +\n'</div></div>' +\n\n'</div>' +\n\n// Footer\n'<div style=\"background: #1a1a2e; color: white; padding: 25px; text-align: center;\">' +\n'<p style=\"margin: 0 0 10px; font-size: 13px;\">Disclaimer: This analysis is for informational purposes only. Past performance does not guarantee future results. Trade at your own risk.</p>' +\n'<p style=\"margin: 0; font-size: 12px; opacity: 0.7;\">Generated by n8n Automation | Data: TwelveData + Myfxbook | Analysis: OpenAI</p>' +\n'</div>' +\n\n'</div></body></html>';\n\nvar eBias = function(b) { return b === 'BULLISH' ? '\\u{1F7E2}' : b === 'BEARISH' ? '\\u{1F534}' : '\\u{1F7E1}'; };\nreturn {\n  json: {\n    emailHtml: emailHtml,\n    subject: 'Pre-Market: GC ' + eBias(gcBias) + ' | NQ ' + eBias(nqBias) + ' | ES ' + eBias(esBias) + ' | SI ' + eBias(silverBias) + ' | BTC ' + eBias(btcBias) + ' - ' + new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),\n    plainText: analysis.message ? analysis.message.content : (analysis.text || 'See HTML version for full analysis')\n  }\n};"
+      },
+      "id": "d19eda10-cdc7-4b4e-989a-6173bd2c2924",
+      "name": "Format Email Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "YOUR_EMAIL@gmail.com",
+        "subject": "={{ $json.subject }}",
+        "emailType": "html",
+        "message": "={{ $json.emailHtml }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "8cf409f4-30f6-4f63-8643-8ed0189adc6e",
+      "name": "Send Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1360,
+        160
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAU/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1day"
+            },
+            {
+              "name": "outputsize",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "gc-daily-fetch",
+      "name": "Fetch Gold Daily Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "NQ"
+            },
+            {
+              "name": "interval",
+              "value": "1day"
+            },
+            {
+              "name": "outputsize",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "nq-daily-fetch",
+      "name": "Fetch NQ Daily Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1800
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "ES"
+            },
+            {
+              "name": "interval",
+              "value": "1day"
+            },
+            {
+              "name": "outputsize",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "es-daily-fetch",
+      "name": "Fetch ES Daily Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        1900
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "XAG/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1day"
+            },
+            {
+              "name": "outputsize",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "silver-daily-fetch",
+      "name": "Fetch Silver Daily Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        2000
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "BTC/USD"
+            },
+            {
+              "name": "interval",
+              "value": "1day"
+            },
+            {
+              "name": "outputsize",
+              "value": "5"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "btc-daily-fetch",
+      "name": "Fetch BTC Daily Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -16,
+        2100
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Daily 5:30 AM PST Trigger": {
+      "main": [
+        [
+          {
+            "node": "Fetch Gold 5min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Gold 60min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch NQ 5min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch NQ 60min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch ES 5min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch ES 60min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Silver 5min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Silver 60min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch BTC 5min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch BTC 60min Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Economic Calendar",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch GC Chart Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch NQ Chart Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch ES Chart Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Silver Chart Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch BTC Chart Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Gold Daily Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch NQ Daily Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch ES Daily Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch Silver Daily Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Fetch BTC Daily Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Gold 5min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Gold 60min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch NQ 5min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch NQ 60min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch ES 5min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch ES 60min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Silver 5min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Silver 60min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch BTC 5min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch BTC 60min Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Economic Calendar": {
+      "main": [
+        [
+          {
+            "node": "Parse Calendar XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Calendar XML": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch GC Chart Image": {
+      "main": [
+        [
+          {
+            "node": "Encode Charts to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch NQ Chart Image": {
+      "main": [
+        [
+          {
+            "node": "Encode Charts to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch ES Chart Image": {
+      "main": [
+        [
+          {
+            "node": "Encode Charts to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Silver Chart Image": {
+      "main": [
+        [
+          {
+            "node": "Encode Charts to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch BTC Chart Image": {
+      "main": [
+        [
+          {
+            "node": "Encode Charts to Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge All Data": {
+      "main": [
+        [
+          {
+            "node": "Process Market Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Market Data": {
+      "main": [
+        [
+          {
+            "node": "AI Trading Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encode Charts to Base64": {
+      "main": [
+        [
+          {
+            "node": "Format Email Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Trading Analysis": {
+      "main": [
+        [
+          {
+            "node": "Format Email Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Email Report": {
+      "main": [
+        [
+          {
+            "node": "Send Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Gold Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch NQ Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch ES Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Silver Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch BTC Daily Data": {
+      "main": [
+        [
+          {
+            "node": "Merge All Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Los_Angeles"
+  },
+  "versionId": "updated-v4-pdh-sessions-news",
+  "meta": {
+    "instanceId": "45c80f72db44d7e9da1087f4e740fc1ec03746e38403d448bc6e78490e74f410"
+  },
+  "id": "ItcHApInAE2U52h3cfmuz",
+  "tags": []
+}

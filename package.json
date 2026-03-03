@@ -1,0 +1,29 @@
+{
+  "name": "overnight-futures-analyst",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx tsx run.ts",
+    "lint": "npx tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "better-sqlite3": "^12.6.2",
+    "drizzle-orm": "^0.45.1",
+    "fast-xml-parser": "^5.4.1",
+    "nodemailer": "^8.0.1",
+    "tsx": "^4.21.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
+    "@types/uuid": "^10.0.0",
+    "drizzle-kit": "^0.31.9",
+    "typescript": "^5",
+    "vitest": "^4.0.18"
+  }
+}
