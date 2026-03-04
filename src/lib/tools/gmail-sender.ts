@@ -11,19 +11,23 @@ export async function sendEmail(
   subject: string,
   html: string
 ): Promise<EmailResult> {
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-  if (!user || !pass) throw new Error('GMAIL_USER or GMAIL_APP_PASSWORD is not set');
+  const host = process.env.SMTP_HOST;
+  const port = parseInt(process.env.SMTP_PORT || '465');
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  if (!host || !user || !pass) throw new Error('SMTP_HOST, SMTP_USER, or SMTP_PASS is not set');
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host,
+    port,
+    secure: port === 465,
     auth: { user, pass },
   });
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const info = await transporter.sendMail({
-        from: user,
+        from: process.env.SMTP_FROM || user,
         to: to.join(', '),
         subject,
         html,
