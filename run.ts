@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { runPipeline } from './src/lib/pipeline/orchestrator';
 
 (async () => {
