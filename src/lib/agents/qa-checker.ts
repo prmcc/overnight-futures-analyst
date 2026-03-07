@@ -37,7 +37,7 @@ Check all items listed in your system prompt and respond with ONLY a JSON object
   "corrections": "specific corrections if failed, empty string if passed"
 }`;
 
-  const model = config.model || 'anthropic/claude-haiku-4-5-20251001';
+  const model = config.model || 'anthropic/claude-haiku-4.5';
 
   console.log(`[QA Checker] Validating with ${model}...`);
 

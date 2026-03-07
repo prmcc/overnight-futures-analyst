@@ -95,7 +95,7 @@ export async function runTradingAnalyst(
     }
   }
 
-  const model = config.model || 'anthropic/claude-sonnet-4-20250514';
+  const model = config.model || 'anthropic/claude-sonnet-4';
 
   console.log(`[Trading Analyst] Sending to ${model} with ${instruments.length} instruments...`);
 
