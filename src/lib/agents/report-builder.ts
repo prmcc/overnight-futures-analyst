@@ -19,12 +19,31 @@ function consolBadge(is: boolean): string {
   return '<span style="background:#27ae60;color:#ffffff;padding:2px 6px;font-size:10px;">VOLATILE</span>';
 }
 
-function formatAnalysisHtml(text: string): string {
+function formatSectionHtml(text: string): string {
   return text
-    .replace(/### (.*)/g, '<h3 style="color:#1a1a2e;margin:18px 0 8px 0;font-size:16px;border-bottom:1px solid #dddddd;padding-bottom:6px;">$1</h3>')
-    .replace(/## (.*)/g, '<h2 style="color:#1a1a2e;margin:22px 0 10px 0;font-size:18px;">$1</h2>')
+    .replace(/### (.*)/g, '<h3 style="color:#1a1a2e;margin:14px 0 6px 0;font-size:15px;">$1</h3>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\n/g, '<br>');
+}
+
+/** Split analysis text by ## headers into separate instrument sections */
+function splitAnalysisSections(text: string): { title: string; body: string }[] {
+  const sections: { title: string; body: string }[] = [];
+  const parts = text.split(/^## /m);
+  for (const part of parts) {
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const newlineIdx = trimmed.indexOf('\n');
+    if (newlineIdx === -1) {
+      sections.push({ title: trimmed, body: '' });
+    } else {
+      sections.push({
+        title: trimmed.slice(0, newlineIdx).trim(),
+        body: trimmed.slice(newlineIdx + 1).trim(),
+      });
+    }
+  }
+  return sections;
 }
 
 /** Wraps content in a responsive table-based container */
@@ -260,14 +279,28 @@ export function buildReport(
     html += `</td></tr>`;
   }
 
-  // ===== AI ANALYSIS =====
+  // ===== AI ANALYSIS (grouped by instrument) =====
   html += `<tr><td style="padding:20px 15px 0;">
-<h2 style="margin:0 0 12px;font-size:18px;color:#1a1a2e;">AI Trading Analysis</h2>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-<tr><td style="background-color:#f8f9fa;padding:20px 15px;border-left:4px solid #3498db;line-height:1.7;font-size:14px;">
-${formatAnalysisHtml(analysisText)}
-</td></tr></table>
-</td></tr>`;
+<h2 style="margin:0 0 15px;font-size:18px;color:#1a1a2e;">AI Trading Analysis</h2>`;
+
+  const analysisSections = splitAnalysisSections(analysisText);
+  const borderColors = ['#3498db', '#27ae60', '#e74c3c', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#2ecc71'];
+
+  for (let i = 0; i < analysisSections.length; i++) {
+    const section = analysisSections[i];
+    const borderColor = borderColors[i % borderColors.length];
+    const isOverview = section.title.toLowerCase().includes('overview') || section.title.toLowerCase().includes('summary');
+
+    html += `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:12px;">
+<tr><td style="background-color:${isOverview ? '#1a1a2e' : borderColor};padding:10px 15px;">
+<h3 style="margin:0;font-size:16px;font-weight:bold;color:#ffffff;">${section.title}</h3>
+</td></tr>
+<tr><td style="background-color:#f8f9fa;padding:15px;border-left:4px solid ${borderColor};line-height:1.7;font-size:14px;">
+${formatSectionHtml(section.body)}
+</td></tr></table>`;
+  }
+
+  html += `</td></tr>`;
 
   // ===== FOOTER =====
   html += `<tr><td style="background-color:#1a1a2e;color:#ffffff;padding:20px 15px;text-align:center;">
