@@ -43,5 +43,14 @@
     "decimals": 0,
     "isUTC": true,
     "enabled": true
+  },
+  {
+    "id": "rty",
+    "name": "Russell 2000 (RTY)",
+    "symbol": "RTY=F",
+    "chartSymbol": "CME_MINI:RTY1!",
+    "decimals": 2,
+    "isUTC": false,
+    "enabled": true
   }
 ]
