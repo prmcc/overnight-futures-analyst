@@ -50,7 +50,7 @@
   "qaMaxRetries": 2,
   "emailRecipients": [],
   "deliveryChannels": {
-    "telegram": true,
+    "telegram": false,
     "email": true
   }
 }
