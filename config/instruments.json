@@ -52,50 +52,5 @@
     "decimals": 2,
     "isUTC": false,
     "enabled": true
-  },
-  {
-    "id": "nvda",
-    "name": "NVIDIA (NVDA)",
-    "symbol": "NVDA",
-    "chartSymbol": "NASDAQ:NVDA",
-    "decimals": 2,
-    "isUTC": false,
-    "enabled": true
-  },
-  {
-    "id": "meta",
-    "name": "Meta (META)",
-    "symbol": "META",
-    "chartSymbol": "NASDAQ:META",
-    "decimals": 2,
-    "isUTC": false,
-    "enabled": true
-  },
-  {
-    "id": "amzn",
-    "name": "Amazon (AMZN)",
-    "symbol": "AMZN",
-    "chartSymbol": "NASDAQ:AMZN",
-    "decimals": 2,
-    "isUTC": false,
-    "enabled": true
-  },
-  {
-    "id": "qqq",
-    "name": "QQQ ETF",
-    "symbol": "QQQ",
-    "chartSymbol": "NASDAQ:QQQ",
-    "decimals": 2,
-    "isUTC": false,
-    "enabled": true
-  },
-  {
-    "id": "nflx",
-    "name": "Netflix (NFLX)",
-    "symbol": "NFLX",
-    "chartSymbol": "NASDAQ:NFLX",
-    "decimals": 2,
-    "isUTC": false,
-    "enabled": true
   }
 ]
